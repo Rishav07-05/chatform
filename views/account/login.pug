@@ -1,30 +1,37 @@
 extends ../layout
 
 block content
+  .container-fluid.auth-container
+    .row.justify-content-center.align-items-center.min-vh-100
+      .col-md-10.d-flex.flex-wrap.shadow-lg.rounded.overflow-hidden
 
-  .col-md-12.left-column.no-float
+        // Left Panel: Sign In Form
+        .col-md-6.bg-white.p-5
+          .logo-full.mb-4
+            // Include logo here if needed
 
-    .logo-full
+          h2.text-dark.mb-4.text-center Sign In
 
-    .form-block
-        .col-md-1
-          p &nbsp;
-        .col-md-5.white-block
-          h3 Sign In
           form.form-horizontal(id='signup-form', method='POST')
             input(type='hidden', name='_csrf', value=_csrf)
-            input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, required)
-            input.form-control(type='password', name='password', id='password', placeholder='Password', required)
 
-            .form-group
-              .col-sm-offset-3.col-sm-8
-                button.btn.btn-save.pull-right(type='submit')
-                  | Sign In
-        .col-md-5.purple-block
-            h3 Forms. Over your favourite messaging channel.
-            p With Chatform, you can design forms and surveys that anyone can fill using their favourite messaging apps, SMS, or web chat.
+            .form-group.mb-3
+              label(for='email') Email
+              input.form-control(type='email', name='email', id='email', placeholder='Enter your email', required, autofocus)
 
-            p Don't have an account? <a href="/signup"><u>Sign Up</u></a>
+            .form-group.mb-4
+              label(for='password') Password
+              input.form-control(type='password', name='password', id='password', placeholder='Enter your password', required)
 
-        .col-md-1
-          p &nbsp;
+            .form-group.text-end
+              button.btn.btn-primary(type='submit') Sign In
+
+        // Right Panel: Info Block
+        .col-md-6.bg-purple.text-white.p-5.d-flex.flex-column.justify-content-center
+          h2 Forms. Over your favourite messaging channel.
+
+          p.mt-3 With Chatform, you can design forms and surveys that anyone can fill using their favourite messaging apps, SMS, or web chat.
+
+          p.mt-4
+            | Don't have an account? 
+            a.text-white.fw-bold(href="/signup") Sign Up
